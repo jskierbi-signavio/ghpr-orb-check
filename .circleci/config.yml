@@ -1,0 +1,17 @@
+version: 2.1
+
+orbs:
+  ghpr: narrativescience/ghpr@1.1.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:15.0.1
+    steps:
+      - checkout
+      - ghpr/get-pr-info 
+      - run:
+          name: 'Print PR information'
+          command: echo "GITHUB_PR_BASE_BRANCH=$GITHUB_PR_BASE_BRANCH"
+
+
